@@ -10,6 +10,9 @@ test('stringify', function (t) {
             JSON.stringify(obj)
         );
     }
+
+    // sanitize to toJSON feature of JSON.stringify
+    t.equal(json.stringify({toJSON:function(){ return "hello"; }}), '"[SecurityError: user-defined toJSON is not allowed]"');
     
     t.end();
 });
